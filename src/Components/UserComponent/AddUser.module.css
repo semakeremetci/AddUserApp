@@ -1,0 +1,33 @@
+.form-control {
+  color: #2e3d64;
+}
+.form-control input {
+  display: block;
+  width: 100%;
+  border: 1px solid #dbdfea;
+  font: inherit;
+  line-height: 1.5rem;
+  padding: 0 0.25rem;
+  margin: 0.5rem 0;
+}
+
+.form-control input:focus {
+  outline: none;
+  background: #ffead2;
+  border-color: #dbdfea;
+}
+
+.form-control button {
+  font: inherit;
+  cursor: pointer;
+  padding: 0.7rem 0.7rem;
+  border: 1px solid #dbdfea;
+  background-color: #8294c4;
+  color: white;
+  border-radius: 12px;
+  margin-right: 1rem;
+}
+
+.form-control.inValid label {
+  color: red;
+}
