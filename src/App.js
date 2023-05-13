@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import User from "./Components/UserComponent/User";
-import Card from "./Components/CardComponent/Card";
-import Modal from "./Components/Modal/Modal";
+import AddUser from "./Components/UserComponent/AddUser";
+import UserList from "./Components/UserComponent/UserList";
+import Modal from "./Components/UI/Modal";
 import styles from "./App.module.css";
 
 function App() {
@@ -34,8 +34,8 @@ function App() {
   return (
     <div className={styles.body}>
       <Modal></Modal>
-      <User userData={dataHandler}></User>
-      <Card items={itemsInfo}></Card>
+      <AddUser addUserData={dataHandler}></AddUser>
+      <UserList items={itemsInfo}></UserList>
     </div>
   );
 }

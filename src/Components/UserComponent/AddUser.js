@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import styles from "./AddUser.module.css";
+import UICard from "../UI/UICard";
+import Button from "../UI/Buttton";
 
 const AddUser = (props) => {
   let [inputName, setInputName] = useState("");
@@ -16,32 +18,44 @@ const AddUser = (props) => {
     event.preventDefault();
     if (inputName.trim().length !== 0 && inputAge !== 0) {
       setIsValid(true);
+      const updatedName =
+        inputName.trim().charAt(0).toUpperCase() + inputName.trim().slice(1);
+      console.log(updatedName);
       const dataInfo = {
-        Name: inputName.trim(),
+        Name: updatedName,
         Age: Number(inputAge),
       };
       props.addUserData(dataInfo);
     } else {
       setIsValid(false);
     }
+    setInputName("");
+    setInputAge(0);
   };
 
   return (
-    <form
-      className={`${styles["form-control"]} ${!isValid && styles.inValid}`}
-      onSubmit={formSubmitHandler}
-    >
-      <label>Username:</label>
-      <input type="text" onChange={inputNameChangeHandler}></input>
-      <label>Age:</label>
-      <input
-        type="number"
-        min={1}
-        max={100}
-        onChange={inputAgeChangeHandler}
-      ></input>
-      <button type="submit">Add User</button>
-    </form>
+    <UICard>
+      <form
+        className={`${styles["form-control"]} ${!isValid && styles.inValid}`}
+        onSubmit={formSubmitHandler}
+      >
+        <label>Username:</label>
+        <input
+          type="text"
+          value={inputName}
+          onChange={inputNameChangeHandler}
+        ></input>
+        <label>Age:</label>
+        <input
+          value={inputAge}
+          type="number"
+          min={1}
+          max={100}
+          onChange={inputAgeChangeHandler}
+        ></input>
+        <Button type="submit">Add User</Button>
+      </form>
+    </UICard>
   );
 };
 
