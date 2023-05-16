@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import styles from "./AddUser.module.css";
 import UICard from "../UI/UICard";
 import Button from "../UI/Buttton";
+import Modal from "../UI/Modal";
 
 const AddUser = (props) => {
   let [inputName, setInputName] = useState("");
   let [inputAge, setInputAge] = useState(0);
-  const [isValid, setIsValid] = useState(true);
+  let [isValid, setIsValid] = useState();
 
   const inputNameChangeHandler = (event) => {
     setInputName(event.target.value);
@@ -16,46 +17,66 @@ const AddUser = (props) => {
   };
   const formSubmitHandler = (event) => {
     event.preventDefault();
-    if (inputName.trim().length !== 0 && inputAge !== 0) {
-      setIsValid(true);
-      const updatedName =
-        inputName.trim().charAt(0).toUpperCase() + inputName.trim().slice(1);
-      console.log(updatedName);
-      const dataInfo = {
-        Name: updatedName,
-        Age: Number(inputAge),
-      };
-      props.addUserData(dataInfo);
-    } else {
-      setIsValid(false);
+    if (inputName.trim().length === 0) {
+      setIsValid({
+        title: "Invalid Input",
+        message: "Please enter a valid name.",
+      });
+      return;
     }
+    if (inputAge <= 0) {
+      setIsValid({
+        title: "Invalid Age",
+        message: "Please enter a valid age (> 0).",
+      });
+      return;
+    }
+    const updatedName =
+      inputName.trim().charAt(0).toUpperCase() + inputName.trim().slice(1);
+    console.log(updatedName);
+    const dataInfo = {
+      Name: updatedName,
+      Age: Number(inputAge),
+    };
+    props.addUserData(dataInfo);
     setInputName("");
     setInputAge(0);
   };
 
+  const errorHnadler = () => {
+    setIsValid(null);
+  };
+
   return (
-    <UICard>
-      <form
-        className={`${styles["form-control"]} ${!isValid && styles.inValid}`}
-        onSubmit={formSubmitHandler}
-      >
-        <label>Username:</label>
-        <input
-          type="text"
-          value={inputName}
-          onChange={inputNameChangeHandler}
-        ></input>
-        <label>Age:</label>
-        <input
-          value={inputAge}
-          type="number"
-          min={1}
-          max={100}
-          onChange={inputAgeChangeHandler}
-        ></input>
-        <Button type="submit">Add User</Button>
-      </form>
-    </UICard>
+    <div>
+      {isValid && (
+        <Modal
+          title={isValid.title}
+          message={isValid.message}
+          onConfirm={errorHnadler}
+        ></Modal>
+      )}
+      <UICard>
+        <form
+          className={`${styles["form-control"]}`}
+          onSubmit={formSubmitHandler}
+        >
+          <label>Username:</label>
+          <input
+            type="text"
+            value={inputName}
+            onChange={inputNameChangeHandler}
+          ></input>
+          <label>Age:</label>
+          <input
+            value={inputAge}
+            type="number"
+            onChange={inputAgeChangeHandler}
+          ></input>
+          <Button type="submit">Add User</Button>
+        </form>
+      </UICard>
+    </div>
   );
 };
 

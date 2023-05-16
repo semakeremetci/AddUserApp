@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import AddUser from "./Components/UserComponent/AddUser";
 import UserList from "./Components/UserComponent/UserList";
-import Modal from "./Components/UI/Modal";
 import styles from "./App.module.css";
 
 function App() {
@@ -33,7 +32,6 @@ function App() {
   };
   return (
     <div className={styles.body}>
-      <Modal></Modal>
       <AddUser addUserData={dataHandler}></AddUser>
       <UserList items={itemsInfo}></UserList>
     </div>
