@@ -1,17 +1,21 @@
 button {
   width: 100%;
-  font: inherit;
+  font-weight: bold;
   cursor: pointer;
   padding: 0.7rem 0.7rem;
   border-radius: 12px;
   margin: 0.7rem 1rem 0 0;
   border: 1px solid #dbdfea;
   background-color: #8294c4;
-  color: white;
+  color: #8294c4;
+  background-image: linear-gradient(to bottom right, #dbdfea, #ffead2);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 button:hover {
   border: 1px solid #ffead2;
+  box-shadow: 4px 4px 5px #8294c4;
 }
 
 @media screen and (min-width: 600px) {
