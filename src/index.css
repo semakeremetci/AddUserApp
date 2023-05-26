@@ -4,8 +4,9 @@
 
 html {
   font-family: sans-serif;
-}
-
-body {
-  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(to bottom right, #dbdfea, #ffead2);
+  background-size: cover;
+  background-repeat: no-repeat;
 }

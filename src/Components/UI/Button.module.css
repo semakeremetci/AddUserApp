@@ -1,9 +1,10 @@
 button {
+  width: 100%;
   font: inherit;
   cursor: pointer;
   padding: 0.7rem 0.7rem;
   border-radius: 12px;
-  margin-right: 1rem;
+  margin: 0.7rem 1rem 0 0;
   border: 1px solid #dbdfea;
   background-color: #8294c4;
   color: white;
@@ -11,4 +12,10 @@ button {
 
 button:hover {
   border: 1px solid #ffead2;
+}
+
+@media screen and (min-width: 600px) {
+  button {
+    width: auto;
+  }
 }

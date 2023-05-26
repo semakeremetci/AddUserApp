@@ -3,6 +3,7 @@ import styles from "./AddUser.module.css";
 import UICard from "../UI/UICard";
 import Button from "../UI/Buttton";
 import Modal from "../UI/Modal";
+import Wrapper from "../Helper/Wrapper";
 
 const AddUser = (props) => {
   let [inputName, setInputName] = useState("");
@@ -48,7 +49,7 @@ const AddUser = (props) => {
   };
 
   return (
-    <div>
+    <Wrapper>
       {isValid && (
         <Modal
           title={isValid.title}
@@ -76,7 +77,7 @@ const AddUser = (props) => {
           <Button type="submit">Add User</Button>
         </form>
       </UICard>
-    </div>
+    </Wrapper>
   );
 };
 
