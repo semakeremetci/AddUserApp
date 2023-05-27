@@ -6,7 +6,8 @@ html {
   font-family: sans-serif;
   width: 100vw;
   height: 100vh;
-  background-image: url("../img/pexels-sasha-martynov-1260727.jpg");
+  background-image: linear-gradient(to bottom right, #fef1eb, #ffdfd3);
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center top;
 }
